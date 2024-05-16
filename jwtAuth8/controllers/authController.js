@@ -96,7 +96,10 @@ const handleLogin = async (req, res) => { // Define async function to handle log
     const roles = object.values
     // Create JWTs
     const accessToken = jwt.sign( // Generate access token
-      { "username": foundUser.username }, // Payload containing username
+      { "Userinfo":{ 
+        "username":foundUser.username,
+        "roles":roles}
+       }, // Payload containing username
       process.env.ACCESS_TOKEN_SECRET, // Secret key for signing token
       { expiresIn: "60s" } // Token expiration time
     );

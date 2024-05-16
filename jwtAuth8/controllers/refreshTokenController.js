@@ -82,7 +82,8 @@ const handleRefreshToken = (req, res) => {
     
     // If verification is successful, generate a new access token with a 60-second expiration time
     const accessToken = jwt.sign(
-      { username: decoded.username },
+      { "Userinfo":{
+        "username": decoded.username }},
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "60s" }
     );
