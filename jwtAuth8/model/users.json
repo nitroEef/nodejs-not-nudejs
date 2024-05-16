@@ -17,13 +17,17 @@
     "roles":{
         "user":2001, 
         "Editor":1984,
-        
+        "Admin":5150
+
     },
     "password": "$2b$10$p57IyAvU7WCO4mtLH949zeuDK85z3dbGRYjJd.K3nI.g.cytXTBKK",
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJvZGUiLCJpYXQiOjE3MTU4NTA4MTEsImV4cCI6MTcxNTkzNzIxMX0.jHxcQ27_CP5Sd7ccJ8DhEkKkHhZz1ZbyyOry2oJxN-Q"
   },
   {
     "username": "ogbeni",
+    "roles":{
+        "user":2001, 
+        "Editor":1984},
     "password": "$2b$10$bE2KRZE/uBs/yXwskxVeLufYvXRgl3AlLq88vbgazoSgtbYmlb2sG",
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9nYmVuaSIsImlhdCI6MTcxNTg2MTY0OSwiZXhwIjoxNzE1OTQ4MDQ5fQ.r7VNczc1QDyFUffzOl8T1w_SsivjaINeFAozdvnI-pY"
   },
