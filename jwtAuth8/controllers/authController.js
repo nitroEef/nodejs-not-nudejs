@@ -92,6 +92,8 @@ const handleLogin = async (req, res) => { // Define async function to handle log
   const match = await bcrypt.compare(pwd, foundUser.password); // Compare hashed password with provided password
 
   if (match) { // If passwords match
+
+    const roles = object.values
     // Create JWTs
     const accessToken = jwt.sign( // Generate access token
       { "username": foundUser.username }, // Payload containing username
