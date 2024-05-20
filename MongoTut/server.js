@@ -9,11 +9,10 @@ const employeeRoute = require("./routes/api/employee");
 const corsOptions = require('./config/corsOption');
 const verifyJWT = require("./middleware/verifyJWT");
 const cookieParser = require("cookie-parser");
-require('dotenv').config()
-const mongoose = require('mongoose')
-
+require('dotenv').config();
+const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3500;
-
+const connectDB = require('./config/dbConn');
 // custom middleware logger
 app.use(logger);
 
@@ -21,7 +20,7 @@ app.use(logger);
 
 app.use(cors(corsOptions));
 
-
+connectDB()
 app.use(express.urlencoded({ extended: false }));
 
 // built-in middleware for json 
@@ -57,4 +56,7 @@ app.all('*', (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+mongoose.connection.once("open",() => {
+    console.log("connected to mongodb");
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});
