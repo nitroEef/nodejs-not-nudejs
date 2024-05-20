@@ -1,16 +1,20 @@
+const User = require('../model/User');
+
+
+
 // Object containing user data and a method to set new data
-const usersDB = {
-  users: require("../model/users.json"), // Loading user data from a JSON file
-  setUsers: function (data) { // Method to set new user data
-    this.users = data; // Setting the users data property to the provided data
-  },
-};
+// const usersDB = {
+//   users: require("../model/users.json"), // Loading user data from a JSON file
+  // setUsers: function (data) { // Method to set new user data
+    // this.users = data; // Setting the users data property to the provided data
+//   },
+// };
 
 // Promisified version of the 'fs' module for file system operations
-const fsPromises = require("fs").promises;
+// const fsPromises = require("fs").promises;
 
 // Module for working with file paths
-const path = require("path");
+// const path = require("path");
 
 // Module for hashing passwords using bcrypt
 const bcrypt = require("bcrypt");
@@ -26,8 +30,7 @@ const handleNewUser = async (req, res) => {
       .status(400)
       .json({ Message: "Username and password are required" });
 
-  // Checking if the provided username already exists in the user database, if so, sending a 409 Conflict status
-  const duplicate = usersDB.users.find((person) => person.username === user);
+  const duplicate = await User.findOne({ username: user}).exec()
   if (duplicate) return res.sendStatus(409);
 
   try {
@@ -39,16 +42,16 @@ const handleNewUser = async (req, res) => {
     "roles": {"User":2001} ,"password": hashedPwd };
 
     // Updating the user database with the new user
-    usersDB.setUsers([...usersDB.users, newUser]);
+    // usersDB.setUsers([...usersDB.users, newUser]);
 
     // Writing the updated user data to the JSON file
-    await fsPromises.writeFile(
-      path.join(__dirname, "../model/users.json"),
-      JSON.stringify(usersDB.users)
-    );
+    // await fsPromises.writeFile(
+    //   path.join(__dirname, "../model/users.json"),
+    //   JSON.stringify(usersDB.users)
+    // );
 
     // Logging the updated user data to the console
-    console.log(usersDB.users);
+    // console.log(usersDB.users);
 
     // Sending a 201 Created status with a success message indicating the creation of the new user
     res.status(201).json({'Successs': `New User ${user} created`})
@@ -75,98 +78,3 @@ module.exports = {handleNewUser};
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const usersDB = {
-//   users: require("../model/users.json"),
-//   setUsers: function (data) {
-//     this.users = data;
-//   },
-// };
-
-// const fsPromises = require("fs").promises;
-// const path = require("path");
-// const bcrypt = require("bcrypt");
-
-// const handleNewUser = async (req, res) => {
-//   const { user, pwd } = req.body;
-
-//   if (!user || !pwd)
-//     return res
-//       .status(400)
-//       .json({ Message: "Username and password are required" });
-
-//   const duplicate = usersDB.users.find((person) => person.username === user);
-//   if (duplicate) return res.sendStatus(409); // meaning conflict
-
-//   try {
-//     // encrypting the password
-//     const hashedPwd = await bcrypt.hash(pwd, 10);
-
-//     // storing the new user
-//     const newUser = { username: user, password: hashedPwd };
-//     usersDB.setUsers([...usersDB.users, newUser]);
-//     await fsPromises.writeFile(
-//       path.join(__dirname, "../model/users.json"),
-//       JSON.stringify(usersDB.users)
-//     );
-//     console.log(usersDB.users);
-//     res.status(201).json({'Successs': `New User ${user} created`})
-
-//   } catch (error) {
-//     res.status(500).json({ Message: error.message });
-//   }
-// }; 
-
-
-// module.exports = {handleNewUser}
