@@ -86,14 +86,13 @@ const handleLogin = async (req, res) => { // Define async function to handle log
       .json({ Message: "Username and Password are required" });
 
   const foundUser = usersDB.users.find(person => person.username === user); // Find user in user database
-
   if (!foundUser) return res.sendStatus(401); // If user not found, return a 401 Unauthorized status
 
   const match = await bcrypt.compare(pwd, foundUser.password); // Compare hashed password with provided password
 
   if (match) { // If passwords match
 
-    const roles = object.values
+    const roles = Object.values
     // Create JWTs
     const accessToken = jwt.sign( // Generate access token
       { "Userinfo":{ 

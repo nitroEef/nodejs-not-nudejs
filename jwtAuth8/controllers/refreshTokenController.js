@@ -78,12 +78,14 @@ const handleRefreshToken = (req, res) => {
   // Verifying the refresh token using the secret key and handling errors
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
     // If an error occurs during verification or the decoded username doesn't match the found user's username, send a 403 Forbidden status
-    if (err || foundUser.username !== decoded.username) return res.sendStatus(403);
+    if (err || foundUser.username !== decoded.user) return res.sendStatus(403);
     
+    const roles = Object.values(foundUser.roles)
     // If verification is successful, generate a new access token with a 60-second expiration time
     const accessToken = jwt.sign(
       { "Userinfo":{
-        "username": decoded.username }},
+        "username": decoded.username ,
+      "roles":roles}, },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "60s" }
     );
