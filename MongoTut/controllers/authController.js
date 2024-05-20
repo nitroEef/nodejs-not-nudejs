@@ -70,7 +70,6 @@ const usersDB = {
 const bcrypt = require("bcrypt"); // Import bcrypt library for password hashing
 
 const jwt = require("jsonwebtoken"); // Import jsonwebtoken library for generating JWTs
-require("dotenv").config(); // Load environment variables from .env file
 
 const fsPromises = require("fs").promises; // Import promises-based file system module
 const path = require("path"); // Import path module for file paths

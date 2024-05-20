@@ -7,9 +7,10 @@ const errorHandler = require('./middleware/errorHandler');
 const rootRoute = require("./routes/root");
 const employeeRoute = require("./routes/api/employee");
 const corsOptions = require('./config/corsOption');
-const verifyJWT = require("./middleware/verifyJWT")
-const cookieParser = require("cookie-parser")
-
+const verifyJWT = require("./middleware/verifyJWT");
+const cookieParser = require("cookie-parser");
+require('dotenv').config()
+const mongoose = require('mongoose')
 
 const PORT = process.env.PORT || 3500;
 

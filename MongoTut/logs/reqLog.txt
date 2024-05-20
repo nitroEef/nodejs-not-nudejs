@@ -501,3 +501,12 @@
 20240520	12:02:35	deb0cf8a-2c81-4543-82d2-b5d92460a99e	POST	undefined	/auth
 20240520	12:03:04	532c8f10-13e0-4f67-bf1b-0465aee976a0	GET	undefined	/employee
 20240520	12:03:19	2672bede-db1e-44da-93e5-b9080a2ad6a2	DELETE	undefined	/employee
+20240520	14:21:10	48434d86-69e9-4f5f-b1e8-90c9ade9f1d1	GET	undefined	/employee/3
+20240520	14:21:32	d2ea8fbc-f6fe-4b83-96db-fa516ac36f39	GET	undefined	/employee?id=1
+20240520	14:22:55	4a2e5b9b-347a-4dc6-b711-ef9cab94bf04	GET	undefined	/employee?id=1
+20240520	14:23:08	22697b02-6007-4ad3-a59b-ec45cae0adcc	GET	undefined	/employee/1
+20240520	14:23:37	bec1775a-2ae1-4656-a96b-ce7f82469484	POST	undefined	/auth
+20240520	14:23:56	90bb382c-b04f-46c6-9fe4-cd543734f41b	GET	undefined	/employee/1
+20240520	14:25:21	b463888f-1021-43af-9033-2f40d8c447ad	POST	undefined	/auth
+20240520	14:25:49	c97a69eb-e11d-4c21-8837-3fe2063802a8	DELETE	undefined	/employee/2
+20240520	14:26:13	34df4bc0-f4f0-41fd-8c0a-72e6e99e405b	DELETE	undefined	/employee/2
