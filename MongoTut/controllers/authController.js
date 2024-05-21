@@ -47,18 +47,7 @@ const handleLogin = async (req, res) => {// Define async function to handle logi
     console.log(result);
     console.log(roles);
     
-    const otherUsers = usersDB.users.filter(
-      // Exclude current user from user list
-      (person) => person.username !== foundUser.username
-    );
-    const currentUser = { ...foundUser, refreshToken }; // Add refresh token to current user object
-    usersDB.setUsers([...otherUsers, currentUser]); // Update user data with new refresh token
-    await fsPromises.writeFile(
-      // Write updated user data to JSON file
-      path.join(__dirname, "../model/users.json"), // File path
-      JSON.stringify(usersDB.users) // Convert user data to JSON format
-    );
-
+  
     // create secure cooies with resfresh token 
     res.cookie("jwt", refreshToken, {
       // Set cookie containing refresh token
