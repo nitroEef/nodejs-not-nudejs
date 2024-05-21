@@ -10,21 +10,14 @@ const handleLogout = async(req, res) => {
   
   
     if (!foundUser) {
-      res.clearCookie("jwt", { httpOnly: true })
+      res.clearCookie("jwt", { httpOnly: true, sameSite: "none", secure: true });
       return res.sendStatus(204)
     }
   
-    const otherUsers = usersDB.users.filter(
-      (person) => person.refreshToken !== foundUser.refreshToken
-    );
-    const currentUser = { ...foundUser, refreshToken: '' };
-    usersDB.setUsers([otherUsers, currentUser]);
-  
-    await fsPromises.writeFile(
-      path.join(__dirname, '..', 'model', 'users.json')
-    )
-  
-    res.clearCookie('jwt', {httpOnly: true})
+foundUser.refreshToken = "";
+const result = await foundUser.save();
+console.log(result)
+    res.clearCookie('jwt', {httpOnly: true, sameSite: "none", secure: true })
     return res.sendStatus(204);
   }
   
