@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     username:{
-        type:string,
+        type:String,
         required:true
     },
 
@@ -19,11 +19,11 @@ const userSchema = new Schema({
 
 
     password:{
-        type:string,
+        type:String,
         required:true
     },
 
     refreshToken:String
 })
 
-module.exports = mongoose.model('User',userSchema)
+module.exports = mongoose.model('User', userSchema)

@@ -1,34 +1,17 @@
-
-
-
-// Object containing user data and a method to set new data
-const usersDB = {
-  users: require("../model/users.json"), // Loading user data from a JSON file
-  setUsers: function (data) { // Method to set new user data
-    this.users = data; // Setting the users data property to the provided data
-  },
-};
-
+const User = require("../model/User")
 // Importing the jsonwebtoken module for working with JSON Web Tokens (JWTs)
 const jwt = require("jsonwebtoken");
 
 
 
 // Handler function for refreshing access tokens
-const handleRefreshToken = (req, res) => {
-  // Retrieving cookies from the request object
+const handleRefreshToken = async (req, res) => {
   const cookies = req.cookie;
-  
-  // Checking if a JWT cookie exists, if not, send a 401 Unauthorized status
   if (!cookies?.jwt) return res.sendStatus(401);
-
-  // Extracting the refresh token from the cookies
   const refreshToken = cookies.jwt;
+  const foundUser = await User.findOne({refreshToken}).exec();
 
-  // Finding the user with the corresponding refresh token
-  const foundUser = usersDB.users.find(
-    person => person.refreshToken === refreshToken
-  );
+
 
   // If no user is found with the provided refresh token, send a 403 Forbidden status
   if (!foundUser) return res.sendStatus(403);

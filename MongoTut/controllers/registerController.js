@@ -37,9 +37,15 @@ const handleNewUser = async (req, res) => {
     // Encrypting the password using bcrypt with a cost factor of 10
     const hashedPwd = await bcrypt.hash(pwd, 10);
 
+
+    const result = await User.create({
+      username: user,
+      password:  hashedPwd,
+    })
+    console.log(result)
     // Creating a new user object with the hashed password
-    const newUser = { "username": user, 
-    "roles": {"User":2001} ,"password": hashedPwd };
+    // const newUser = { "username": user, 
+    // "roles": {"User":2001} ,"password": hashedPwd };
 
     // Updating the user database with the new user
     // usersDB.setUsers([...usersDB.users, newUser]);

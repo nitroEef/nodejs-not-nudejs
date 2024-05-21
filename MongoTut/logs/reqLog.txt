@@ -510,3 +510,8 @@
 20240520	14:25:21	b463888f-1021-43af-9033-2f40d8c447ad	POST	undefined	/auth
 20240520	14:25:49	c97a69eb-e11d-4c21-8837-3fe2063802a8	DELETE	undefined	/employee/2
 20240520	14:26:13	34df4bc0-f4f0-41fd-8c0a-72e6e99e405b	DELETE	undefined	/employee/2
+20240520	16:14:25	1b9d8001-d17d-4dcf-8948-dd649e440f08	POST	undefined	/register
+20240520	16:31:29	298188f6-3f7c-441a-b5e2-f3623208aa4f	POST	undefined	/register
+20240520	16:32:35	a82ed4d2-c7ac-4dc3-8557-affba2053702	POST	undefined	/register
+20240520	16:32:52	18c0b1e9-44fd-4724-8ffe-9c51cdc2b2d2	POST	undefined	/register
+20240520	16:36:52	3e9c0fc7-9a31-4bad-9ee9-6cecb6e8c961	POST	undefined	/register
