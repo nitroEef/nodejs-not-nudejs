@@ -41,6 +41,12 @@ const handleLogin = async (req, res) => {// Define async function to handle logi
       { expiresIn: "1d" } // Token expiration time
     );
 
+    // saving refresh token with current user 
+    foundUser.refreshToken = refreshToken;
+    const result = await foundUser.save();
+    console.log(result);
+    console.log(roles);
+    
     const otherUsers = usersDB.users.filter(
       // Exclude current user from user list
       (person) => person.username !== foundUser.username
@@ -60,12 +66,12 @@ const handleLogin = async (req, res) => {// Define async function to handle logi
       secure: true, sameSite:"none", maxAge: 24 * 60 * 60 * 1000, // Cookie expiration time (24 hours)
     });
 
-    send authorization roles and access to user
+    // send authorization roles and access to user
     res.json({ accessToken }); // Send access token in response
   } else 
     // If passwords do not match
     res.sendStatus(401); // Return a 401 Unauthorized status
-  }
+  
 };
 
 module.exports = { handleLogin }; // Export handleLogin function for use in other modules
