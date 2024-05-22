@@ -6,8 +6,11 @@ const jwt = require("jsonwebtoken");
 
 // Handler function for refreshing access tokens
 const handleRefreshToken = async (req, res) => {
-  const cookies = req.cookie;
-  if (!cookies?.jwt) return res.sendStatus(401);
+  const cookies = req.cookies;
+  if (!cookies){
+    console.log('yhhhhhhhh')
+    return res.sendStatus(401);
+  } 
   const refreshToken = cookies.jwt;
   const foundUser = await User.findOne({refreshToken}).exec();
 
