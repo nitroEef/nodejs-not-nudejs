@@ -600,3 +600,6 @@
 20240522	11:07:13	05b453b7-9998-4f3c-9943-cd78c6dd17af	POST	undefined	/auth
 20240522	11:07:24	2f31e156-0594-422a-be7d-aed40e8c1e21	GET	undefined	/refresh
 20240522	12:22:50	edd39554-9c73-4689-9b89-082eff054ec7	POST	undefined	/register
+20240522	13:02:06	53ff6cdd-2984-4bbb-a0b8-0266a07c7b7b	POST	undefined	/auth
+20240522	13:02:32	7359a190-b9e7-4a06-823c-cc632ba23514	GET	undefined	/employee
+20240522	13:02:41	5234e8e3-3409-4bbd-bea0-a7e3012bfe52	GET	undefined	/employee
